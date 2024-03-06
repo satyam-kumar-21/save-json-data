@@ -1,15 +1,18 @@
 import React, { useState } from "react";
 
-function Timezone() {
-  const { selectedTimezone, handleTimezoneChange } = useState("UTC");
+function Timezone({ handleTimezoneChange }) {
+  const [selectedTimezone, setSelectedTimezone] = useState("5");
 
   const handleSelectChange = (e) => {
-    handleTimezoneChange(e.target.value);
+    const newTimezone = e.target.value;
+    handleTimezoneChange(newTimezone);
+    setSelectedTimezone(newTimezone);
   };
+
   const timezones = [
-    { name: "[UTC -5] Eastern Standard Time", offset: 0 },
-    { name: "CET", offset: 1 },
-];
+    { name: "[UTC -2] Mid Atlantic", offset: 2 },
+    { name: "[UTC -5] Eastern Standard Time", offset: 5 },
+  ];
 
   return (
     <div className="mt-4 p-2">
@@ -30,3 +33,4 @@ function Timezone() {
 }
 
 export default Timezone;
+
